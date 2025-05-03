@@ -9,38 +9,18 @@
     </div>
   </template>
   
-  <script lang="ts">
-  import { defineComponent } from "vue";
-  import "../assets/css/LoginPage.css";
+<script lang="ts">
+import { defineComponent } from "vue";
+import "../assets/css/LoginPage.css";
+import "../assets/ts/LoginPage.ts";
+import userLogin from "@/assets/ts/LoginPage";
   
-  export default defineComponent({
-    name: "LoginPage",
-    data() {
-        return{
-          userId: '',
-          pw: '',
-        };
-    },
-    methods: {
-      async login() {
-        try {
-          const response = await fetch('http://localhost:8080/api/v1/user/sign-in', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({userId: this.userId, pw: this.pw}),
-          });
-          if(!response.ok) {
-            throw new Error('login failed');
-          }
-          alert('login successful');
-        } catch(error){
-          console.error(error);
-          alert('Error login')
-        }
-      }
-    },
-  });
-  </script>
+export default defineComponent({
+  name: "LoginPage",
+  setup() {
+    const {userId, pw, login} = userLogin();
+    return{userId, pw, login}
+  }
+});
+</script>
   
