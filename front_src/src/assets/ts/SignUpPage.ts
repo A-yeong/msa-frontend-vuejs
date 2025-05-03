@@ -81,6 +81,12 @@ export default function userSignUp() {
         }
     };
 
+    const checkDuplicateId = async () => {
+        // TODO
+        // 중복 체크 로직 추가
+        alert("사용 가능한 아이디입니다.");
+    };
+
     return {
         userId,
         pw,
@@ -93,5 +99,6 @@ export default function userSignUp() {
         pwCheckCorrect,
         pwCheckMessage,
         signUp,
+        checkDuplicateId,
     };
 }

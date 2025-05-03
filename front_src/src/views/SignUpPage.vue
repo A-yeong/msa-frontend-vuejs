@@ -4,7 +4,7 @@
       <form id="signup-form" @submit.prevent="signUp">
         <div class="id_div">
           <input v-model="userId" class="id_input" type="text" name="userId" placeholder="아이디">
-          <input type="submit" class="check_id" value="중복 확인">
+          <input type="button" class="check_id" value="중복 확인" @click="checkDuplicateId">
         </div>
         <span class="id_desc" :class="{valid: isValidUserId, invalid: !isValidUserId && userId.length > 0}">{{ userIdMessage }}</span>
         <input v-model="pw" class="password_input" type="password" name="userPassword" placeholder="비밀번호">
@@ -32,8 +32,8 @@ import userSignUp from "../assets/ts/SignUpPage";
   export default defineComponent({
     name: "SignUpPage",
     setup() {
-      const { userId, pw, pwCheck, role, isValidUserId, userIdMessage, isValidPassword, userPwMessage, pwCheckCorrect, pwCheckMessage, signUp } = userSignUp();
-      return { userId, pw, pwCheck, role, isValidUserId, userIdMessage, isValidPassword, userPwMessage, pwCheckCorrect, pwCheckMessage, signUp};
+      const { userId, pw, pwCheck, role, isValidUserId, userIdMessage, isValidPassword, userPwMessage, pwCheckCorrect, pwCheckMessage, signUp, checkDuplicateId } = userSignUp();
+      return { userId, pw, pwCheck, role, isValidUserId, userIdMessage, isValidPassword, userPwMessage, pwCheckCorrect, pwCheckMessage, signUp, checkDuplicateId };
     }
   });
 
