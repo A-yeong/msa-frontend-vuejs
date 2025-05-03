@@ -1,6 +1,8 @@
 import {ref, computed} from "vue";
+import { useRouter } from "vue-router";
 
 export default function userLogin() {
+    const router = useRouter();
     const userId = ref("");
     const pw = ref("");
 
@@ -11,15 +13,16 @@ export default function userLogin() {
               headers: {
                 'Content-Type': 'application/json',
               },
+              // credentials: 'include',
               body: JSON.stringify({userId: userId.value, pw: pw.value}),
             });
             if(!response.ok) {
               throw new Error('login failed');
             }
-            alert('login successful');
+            router.push('/');
           } catch(error){
             console.error(error);
-            alert('Error login')
+            alert('오류가 발생했습니다.\n다시 로그인 해주세요.');
           }
     }
 

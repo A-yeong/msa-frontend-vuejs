@@ -1,6 +1,9 @@
 import {ref, computed} from "vue";
+import { useRouter } from "vue-router";
 
 export default function userSignUp() {
+    const router = useRouter();
+
     const userId = ref("");
     const pw = ref("");
     const pwCheck = ref("");
@@ -74,6 +77,8 @@ export default function userSignUp() {
             }
       
             alert("회원가입이 완료되었습니다!");
+            router.push("/login");
+
         }
         catch (error) {
             console.error(error);
