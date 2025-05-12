@@ -19,6 +19,11 @@ export default function userLogin() {
             if(!response.ok) {
               throw new Error('login failed');
             }
+
+            const data = await response.json();
+            // JWT 저장(로컬 스토리지)
+            localStorage.setItem("token", data.accessToken);
+            
             router.push('/');
           } catch(error){
             console.error(error);
